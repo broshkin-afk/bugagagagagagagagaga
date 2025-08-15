@@ -7,5 +7,14 @@ export default defineConfig({
     host: true,
     port: 3000
   },
-  base: './'
+  base: '/',
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  }
 })
