@@ -21,7 +21,12 @@ const SearchFilter = ({ onSearch, onFilter }) => {
       <div className="container">
         <div className="search-bar">
           <div className="search-input-wrapper">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
+                <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </span>
             <input
               type="text"
               placeholder="Поиск аккаунтов..."
@@ -34,7 +39,11 @@ const SearchFilter = ({ onSearch, onFilter }) => {
             className="filter-button"
             onClick={handleFilterClick}
           >
-            <span className="filter-icon">⚙️</span>
+            <span className="filter-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </span>
           </button>
         </div>
         

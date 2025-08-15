@@ -1,7 +1,7 @@
 .stories {
   padding: 16px 0;
-  background-color: var(--tg-theme-bg-color, #ffffff);
-  border-bottom: 1px solid var(--tg-theme-hint-color, #e0e0e0);
+  background: transparent;
+  border-bottom: 1px solid var(--tg-theme-hint-color, rgba(255, 255, 255, 0.1));
 }
 
 .stories-scroll {
@@ -37,10 +37,17 @@
   height: 64px;
   padding: 2px;
   border-radius: 50%;
-  background: linear-gradient(45deg, var(--tg-theme-button-color, #007bff), #ff6b6b, #4ecdc4);
+  background: var(--primary-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.story-ring:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-medium);
 }
 
 .story-item.viewed .story-ring {
@@ -124,22 +131,45 @@
   }
 }
 
-/* Progress Bar */
-.story-progress-bar {
+/* Progress Bars Container */
+.story-progress-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+  z-index: 15;
+}
+
+.story-progress-bar {
+  flex: 1;
   height: 3px;
   background-color: rgba(255, 255, 255, 0.3);
-  z-index: 15;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.story-progress-bar.completed .story-progress-fill {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.story-progress-bar.active .story-progress-fill {
+  animation: storyProgress 5s linear forwards;
+  background-color: #ffffff;
+}
+
+/* Перезапуск анимации для каждой истории */
+.story-progress-bar.active .story-progress-fill {
+  animation: none;
+  animation: storyProgress 5s linear forwards;
 }
 
 .story-progress-fill {
   height: 100%;
-  background-color: #ffffff;
   width: 0%;
-  animation: storyProgress 5s linear forwards;
+  transition: width 0.3s ease;
 }
 
 @keyframes storyProgress {

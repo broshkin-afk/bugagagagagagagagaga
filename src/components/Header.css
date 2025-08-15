@@ -1,10 +1,12 @@
 .header {
-  background-color: var(--tg-theme-bg-color, #ffffff);
-  border-bottom: 1px solid var(--tg-theme-hint-color, #e0e0e0);
+  background: var(--glass-bg, rgba(255, 255, 255, 0.25));
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border, rgba(255, 255, 255, 0.18));
   padding: 16px 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: var(--shadow-light, 0 4px 15px 0 rgba(31, 38, 135, 0.15));
 }
 
 .header-content {
@@ -24,10 +26,13 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--tg-theme-button-color, #007bff);
+  background: var(--primary-gradient, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-light, 0 4px 15px 0 rgba(31, 38, 135, 0.15));
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .avatar img {
@@ -61,16 +66,27 @@
 
 .balance {
   text-align: right;
+  background: var(--glass-bg, rgba(255, 255, 255, 0.25));
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.18));
+  border-radius: var(--border-radius, 12px);
+  padding: 8px 12px;
+  box-shadow: var(--shadow-light, 0 4px 15px 0 rgba(31, 38, 135, 0.15));
 }
 
 .balance-label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--tg-theme-hint-color, #999999);
   margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .balance-amount {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
-  color: var(--tg-theme-button-color, #007bff);
+  background: var(--success-gradient, linear-gradient(135deg, #4facfe 0%, #00f2fe 100%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

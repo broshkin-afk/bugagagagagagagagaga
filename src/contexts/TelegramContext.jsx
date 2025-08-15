@@ -23,6 +23,7 @@ export const TelegramProvider = ({ children }) => {
       if (app.initDataUnsafe?.user) {
         setUser(app.initDataUnsafe.user)
       } else {
+        // Мокап пользователей для тестирования ролей
         setUser({
           id: 123456789,
           first_name: 'Test',
@@ -45,9 +46,23 @@ export const TelegramProvider = ({ children }) => {
     }
   }, [])
 
+  // Система ролей
+  const getUserRole = (userId) => {
+    // Проверяем, если это локальный хост, то демонстрационный админ
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    
+    if (userId === 282063428) return 'impulse_admin'
+    if (isLocalhost && userId === 123456789) return 'impulse_admin' // Для демо на локалхосте
+    if (userId === 123456789) return 'shop_admin' // Для демо
+    return 'user'
+  }
+
+  const userRole = user ? getUserRole(user.id) : 'user'
+
   const value = {
     user,
     webApp,
+    userRole,
     showAlert: (message) => {
       if (webApp) {
         webApp.showAlert(message)
