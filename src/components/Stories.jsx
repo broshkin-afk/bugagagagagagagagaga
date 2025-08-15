@@ -147,9 +147,7 @@ const Stories = () => {
                   <div className="story-image">
                     <img src={story.image} alt={story.title} />
                   </div>
-                  {story.isNew && !isViewed && (
-                    <div className="story-badge">🆕</div>
-                  )}
+
                 </div>
                 <span className="story-title">{story.title}</span>
               </div>
